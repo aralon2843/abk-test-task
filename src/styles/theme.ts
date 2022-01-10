@@ -6,7 +6,7 @@ const theme = {
     light: '#F4EDE5',
     green: '#BCC99B',
     pink: '#E8B0AF',
-    colar: '#E2686B',
+    coral: '#E2686B',
     orange: '#C26522',
   },
 };

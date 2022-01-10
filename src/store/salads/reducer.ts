@@ -17,7 +17,6 @@ const saladsReducer = (
         status: 'loading',
       };
     case SaladsActionTypes.GET_SALADS_SUCCESS:
-      debugger;
       return {
         ...state,
         status: 'succeeded',

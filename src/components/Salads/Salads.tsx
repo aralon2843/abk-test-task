@@ -1,4 +1,11 @@
 import { ISalad } from '../../store/salads/types';
+import {
+  Button,
+  DiscountPrice,
+  Price,
+  Title,
+} from '../Molecules/Molecules.styles';
+import { SaladsWrapper, SaladWrapper } from './Salads.styled';
 
 interface ISaladsProps {
   salads: ISalad[] | null;
@@ -6,11 +13,21 @@ interface ISaladsProps {
 
 const Salads: React.FC<ISaladsProps> = ({ salads }): JSX.Element => {
   return (
-    <>
+    <SaladsWrapper>
       {salads?.map((salad) => (
-        <h1>{salad._id}</h1>
+        <SaladWrapper>
+          <Title>{salad.title}</Title>
+          {salad.price === salad.discount_price ? (
+            <Price>Цена: {salad.price}</Price>
+          ) : (
+            <DiscountPrice>
+              Цена с учетом скидки: {salad.discount_price}
+            </DiscountPrice>
+          )}
+          <Button>Добавить в корзину</Button>
+        </SaladWrapper>
       ))}
-    </>
+    </SaladsWrapper>
   );
 };
 

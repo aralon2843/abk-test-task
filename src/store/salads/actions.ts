@@ -29,7 +29,7 @@ export const fetchSaladsThunk = () => {
       const salads = await getSalads();
       dispatch(fetchSaladsSuccess(salads));
     } catch (e) {
-      dispatch(fetchSaladsFailure('Sorry, there was an error loading posts'));
+      dispatch(fetchSaladsFailure('Sorry, there was an error loading salads'));
     }
   };
 };

@@ -9,10 +9,10 @@ import { Container, Content } from './App.styles';
 const App: React.FC = (): JSX.Element => {
   const salads = useSelector((state: RootState) => state.salads.salads);
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
-    dispatch(fetchSaladsThunk());
-  }, [dispatch]);
+    if (!salads) dispatch(fetchSaladsThunk());
+  }, []);
 
   return (
     <>

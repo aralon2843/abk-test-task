@@ -34,13 +34,13 @@ export const MenuItem = styled.li`
     margin-right: 0;
     padding: 6px 12px;
     border-radius: 12px;
-    background-color: ${({ theme }) => theme.colors.colar};
+    background-color: ${({ theme }) => theme.colors.coral};
     &:hover {
       background-color: ${({ theme }) => theme.colors.green};
       color: ${({ theme }) => theme.colors.light};
     }
   }
   &:not(:last-child):hover {
-    color: ${({ theme }) => theme.colors.colar};
+    color: ${({ theme }) => theme.colors.coral};
   }
 `;
