@@ -18,7 +18,7 @@ const Header: React.FC = (): JSX.Element => {
           <Navigation>
             <Menu>
               <MenuItem>
-                <Link to="/salads">Салаты</Link>
+                <Link to="/">Салаты</Link>
               </MenuItem>
               <MenuItem>
                 <Link to="/create"> Собрать свой салат</Link>

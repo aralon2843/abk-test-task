@@ -1,15 +1,15 @@
-import { Container, Content } from '../App/App.styles';
-import Header from '../Header/Header';
+import { ISalad } from '../../store/salads/types';
 
-const Salads: React.FC = (): JSX.Element => {
+interface ISaladsProps {
+  salads: ISalad[] | null;
+}
+
+const Salads: React.FC<ISaladsProps> = ({ salads }): JSX.Element => {
   return (
     <>
-      <Header />
-      <Container>
-        <Content>
-          <div>САЛАТЫ</div>
-        </Content>
-      </Container>
+      {salads?.map((salad) => (
+        <h1>{salad._id}</h1>
+      ))}
     </>
   );
 };
