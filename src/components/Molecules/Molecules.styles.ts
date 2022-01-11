@@ -6,9 +6,14 @@
 // <DiscountPrice>{molecule.discount_price}</DiscountPrice>
 
 import styled from 'styled-components';
+export const MoleculesWrapper = styled.div`
+  flex: 0 1 50%;
+  display: flex;
+  flex-wrap: wrap;
+`;
 
-// </MoleculeWrapper>
 export const MoleculeWrapper = styled.div`
+  flex: 0 0 33%;
   border: 1px solid ${({ theme }) => theme.colors.coral};
   padding: 10px;
   border-radius: 10px;
