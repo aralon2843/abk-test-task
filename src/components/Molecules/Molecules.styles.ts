@@ -1,10 +1,3 @@
-// <MoleculeWrapper>
-// <Image src={`http://test-job.webatom.ru${molecule.image}`} />
-// <Title>{molecule.title}</Title>
-// <Quantity>{molecule.qty}</Quantity>
-// <Price>{molecule.price}</Price>
-// <DiscountPrice>{molecule.discount_price}</DiscountPrice>
-
 import styled from 'styled-components';
 export const MoleculesWrapper = styled.div`
   flex: 0 1 50%;
@@ -13,52 +6,66 @@ export const MoleculesWrapper = styled.div`
 `;
 
 export const MoleculeWrapper = styled.div`
-  flex: 0 0 33%;
-  border: 1px solid ${({ theme }) => theme.colors.coral};
-  padding: 10px;
+  flex: 0 1 300px;
+  background-color: ${({ theme }) => theme.colors.white};
   border-radius: 10px;
-  max-width: 250px;
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 10px;
+  margin-right: 10px;
+  overflow: hidden;
+  padding-bottom: 15px;
 `;
 
 export const Image = styled.img`
-  border-radius: 50%;
   object-fit: cover;
   object-position: center;
-  height: 50px;
-  width: 50px;
+  height: 120px;
+  width: 100%;
   margin-bottom: 10px;
 `;
 
 export const Title = styled.h2`
+  flex: 1 1 auto;
   font-size: 14px;
-  text-transform: uppercase;
   font-weight: 500;
+  text-align: center;
   margin-bottom: 10px;
 `;
 export const Quantity = styled.p`
-  font-weight: 50;
-  font-size: 16px;
+  flex: 1 1 auto;
+  font-weight: 500;
+  font-size: 18px;
   margin-bottom: 10px;
 `;
 export const Price = styled.div`
+  flex: 1 1 auto;
   padding: 5px 10px;
   border-radius: 10px;
-  border: 1px solid ${({ theme }) => theme.colors.coral};
   font-weight: 500;
   margin-bottom: 10px;
+  text-align: center;
 `;
 
 export const DiscountPrice = styled(Price)``;
 
 export const Button = styled.button`
+  display: block;
   outline: none;
-  border: 1px solid ${({ theme }) => theme.colors.coral};
-  padding: 5px 10px;
-  background-color: ${({ theme }) => theme.colors.red};
+  border: none;
+  padding: 5px 5px;
+  background-color: ${({ theme }) => theme.colors.light};
   border-radius: 10px;
   cursor: pointer;
+  height: 30px;
+  width: 150px;
+  font-weight: 500;
+  transition: 0.3s ease background-color;
+  margin: 0 auto;
+  flex: 0 0 auto;
+  &:not([disabled]):hover {
+    background-color: ${({ theme }) => theme.colors.pink};
+  }
 `;

@@ -8,6 +8,7 @@ import CreatedSalad from '../CreatedSalad/CreatedSalad';
 import { FlexContainer } from '../CreatedSalad/CreatedSalad.styles';
 import Header from '../Header/Header';
 import Molecules from '../Molecules/Molecules';
+import { Title } from '../Molecules/Molecules.styles';
 
 const Create: React.FC = (): JSX.Element => {
   const molecules = useSelector(
@@ -29,18 +30,24 @@ const Create: React.FC = (): JSX.Element => {
 
     if (!hasSameMolecule) {
       if (molecule.qty > 0) {
-        molecule.qty > 0 && molecule.qty--;
-        setCreatedSalad([
+        molecule.qty--;
+
+        const newSalad = [
           ...createdSalad,
-          { ...molecule, qty: molecule.qty - (molecule.qty - 1) },
-        ]);
+          {
+            ...molecule,
+            qty: molecule.qty - (molecule.qty - 1),
+          },
+        ];
+
+        setCreatedSalad(newSalad);
       }
     } else {
       const sameSaladWithMoreQuantity = createdSalad.map(
         (createdSaladMolecule) => {
           if (createdSaladMolecule._id === molecule._id) {
             if (molecule.qty !== 0 && molecule.qty > 0) {
-              molecule.qty > 0 && molecule.qty--;
+              molecule.qty--;
 
               return {
                 ...createdSaladMolecule,
@@ -57,14 +64,12 @@ const Create: React.FC = (): JSX.Element => {
     }
   };
 
-  console.log(createdSalad);
-
   return (
     <>
       <Header />
       <Container>
         <Content>
-          <h1>Собрать свой салат</h1>
+          <Title>Собрать свой салат</Title>
           <FlexContainer>
             <Molecules molecules={molecules} onClick={onMoleculeClick} />
             <CreatedSalad createdSalad={createdSalad} />

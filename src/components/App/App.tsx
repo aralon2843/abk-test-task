@@ -12,7 +12,7 @@ const App: React.FC = (): JSX.Element => {
 
   useEffect(() => {
     if (!salads) dispatch(fetchSaladsThunk());
-  }, []);
+  }, [salads]);
 
   return (
     <>

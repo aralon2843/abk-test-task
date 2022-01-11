@@ -1,9 +1,11 @@
+import { IMolecule } from '../molecules/types';
+
 export interface ISalad {
   _id: string;
   title: string;
   price: number;
   discount_price: number;
-  composition: string[];
+  composition: string[] | IMolecule[];
 }
 
 export interface ISaladsState {

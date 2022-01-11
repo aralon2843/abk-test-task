@@ -6,3 +6,11 @@ export const getMolecules = async (): Promise<IMolecule[]> => {
     .get<AxiosPromise>('http://test-job.webatom.ru/molecules')
     .then((response: any) => response.data.result);
 };
+
+export const getMolecule = async (
+  id: string
+): Promise<IMolecule | IMolecule[]> => {
+  return axios
+    .get<AxiosPromise>(`http://test-job.webatom.ru/molecule/${id}`)
+    .then((response: any) => response.data.result);
+};

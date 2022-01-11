@@ -1,19 +1,40 @@
 import styled from 'styled-components';
 
 export const SaladsWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 2vw;
+  padding: 10px;
+  justify-items: center;
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 2vw;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2vw;
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2vw;
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    grid-gap: 5vw;
+  }
 `;
 
 export const SaladWrapper = styled.div`
-  max-width: 250px;
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 10px;
-  border: 1px solid ${({ theme }) => theme.colors.coral};
-  border-radius: 10px;
-  padding: 10px;
-
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 15px;
+  padding-bottom: 15px;
+  overflow: hidden;
   &:last-child {
     margin-right: 0;
   }
