@@ -1,4 +1,9 @@
-import { ISalad, SaladsAction, SaladsActionTypes } from './types';
+import {
+  ISalad,
+  ISaladFromRequest,
+  SaladsAction,
+  SaladsActionTypes,
+} from './types';
 import { Dispatch } from 'react';
 import { getSalads } from '../../api/salads';
 import { IMolecule } from '../molecules/types';
@@ -31,16 +36,15 @@ export const fetchSaladsThunk = () => {
       const salads = await getSalads();
       const saladsWithExpandedComposition: ISalad[] = [];
 
-      salads.forEach((salad: ISalad) => {
+      salads.forEach((salad: ISaladFromRequest) => {
         const composition = salad.composition;
         const molecules: IMolecule[] = [];
-        composition.forEach(async (id: string | IMolecule) => {
+        composition.forEach((id: string | IMolecule) => {
           if (typeof id === 'string') {
-            const molecule: any = await getMolecule(id);
-            molecules.push(molecule);
-
-            console.log('MOLECULES', molecules);
-            console.log(saladsWithExpandedComposition);
+            getMolecule(id).then((molecule: any) => {
+              molecules.push(molecule);
+              dispatch(fetchSaladsSuccess(saladsWithExpandedComposition));
+            });
           }
         });
         saladsWithExpandedComposition.push({
@@ -48,7 +52,6 @@ export const fetchSaladsThunk = () => {
           composition: molecules,
         });
       });
-      dispatch(fetchSaladsSuccess(saladsWithExpandedComposition));
     } catch (e) {
       dispatch(fetchSaladsFailure('Sorry, there was an error loading salads'));
     }

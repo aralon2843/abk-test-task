@@ -39,3 +39,16 @@ export const SaladWrapper = styled.div`
     margin-right: 0;
   }
 `;
+
+export const SaladCompositionList = styled.ul`
+  flex: 1 1 auto;
+  padding: 0px 10px;
+  width: 100%;
+  margin-bottom: 10px;
+`;
+
+export const SaladCompositionItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+`;

@@ -8,7 +8,12 @@ import {
   CreatedSaladListItem,
 } from '../CreatedSalad/CreatedSalad.styles';
 import Header from '../Header/Header';
-import { Button, DiscountPrice, Price } from '../Molecules/Molecules.styles';
+import {
+  Button,
+  DiscountPrice,
+  Price,
+  Title,
+} from '../Molecules/Molecules.styles';
 import { OrderFooter, OrderInner, OrderWrapper } from './Order.styles';
 
 const Order: React.FC = (): JSX.Element => {
@@ -68,16 +73,33 @@ const Order: React.FC = (): JSX.Element => {
                   </>
                 ) : (
                   <>
-                    <CreatedSaladInner>
-                      <CreatedSaladList>
-                        <CreatedSaladListItem>
-                          {orderSalad?.title}
-                        </CreatedSaladListItem>
-                        <CreatedSaladListItem>
-                          {orderSaladPrice}
-                        </CreatedSaladListItem>
-                      </CreatedSaladList>
-                    </CreatedSaladInner>
+                    <Title>{orderSalad?.title}</Title>
+
+                    {orderSalad?.composition?.map((molecule: IMolecule) => (
+                      <CreatedSaladInner>
+                        <CreatedSaladList>
+                          <CreatedSaladListItem>
+                            {molecule.title}
+                          </CreatedSaladListItem>
+                          <CreatedSaladListItem>
+                            Количество: {molecule.qty}
+                          </CreatedSaladListItem>
+                          <CreatedSaladListItem>
+                            {molecule.price === molecule.discount_price ? (
+                              <Price>
+                                Цена: {molecule.price * molecule.qty}
+                              </Price>
+                            ) : (
+                              <DiscountPrice>
+                                Цена с учетом скидки:{' '}
+                                {molecule.discount_price * molecule.qty}
+                              </DiscountPrice>
+                            )}
+                          </CreatedSaladListItem>
+                        </CreatedSaladList>
+                      </CreatedSaladInner>
+                    ))}
+
                     <OrderFooter>
                       <Price>Общая стоимость: {orderSaladPrice}</Price>
                       <Button>Оформить заказ</Button>

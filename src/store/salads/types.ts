@@ -5,13 +5,21 @@ export interface ISalad {
   title: string;
   price: number;
   discount_price: number;
-  composition: string[] | IMolecule[];
+  composition: IMolecule[];
+}
+
+export interface ISaladFromRequest {
+  _id: string;
+  title: string;
+  price: number;
+  discount_price: number;
+  composition: string[];
 }
 
 export interface ISaladsState {
   salads: ISalad[] | null;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error?: string | null;
+  error: string | null;
 }
 
 export enum SaladsActionTypes {
