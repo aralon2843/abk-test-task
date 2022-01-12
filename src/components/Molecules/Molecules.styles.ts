@@ -81,4 +81,8 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.dark};
     color: ${({ theme }) => theme.colors.white};
   }
+  &:disabled {
+    opacity: 0.5;
+    cursor: auto;
+  }
 `;
