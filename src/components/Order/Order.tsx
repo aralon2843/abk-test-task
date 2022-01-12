@@ -1,5 +1,6 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IMolecule } from '../../store/molecules/types';
+import { postOrderThunk } from '../../store/order/actions';
 import { RootState } from '../../store/store';
 import { Container, Content } from '../App/App.styles';
 import {
@@ -17,7 +18,11 @@ import {
 import { OrderFooter, OrderInner, OrderWrapper } from './Order.styles';
 
 const Order: React.FC = (): JSX.Element => {
-  const orderSalad = useSelector((state: RootState) => state.order.salad);
+  const { orderSalad, error, status } = useSelector(
+    (state: RootState) => state.order
+  );
+
+  const dispatch = useDispatch();
 
   const orderSaladPrice = Array.isArray(orderSalad)
     ? orderSalad?.reduce((sum: number, molecule: IMolecule): number => {
@@ -32,6 +37,22 @@ const Order: React.FC = (): JSX.Element => {
     ? orderSalad?.price
     : orderSalad?.discount_price;
 
+  const postOrderButtonClick = (): void => {
+    if (Array.isArray(orderSalad)) {
+      const molecules = orderSalad.map((molecule) => ({
+        id: molecule._id,
+        qty: molecule.qty,
+      }));
+      dispatch(postOrderThunk(molecules));
+    } else {
+      const molecules = orderSalad?.composition?.map((molecule) => ({
+        id: molecule._id,
+        qty: molecule.qty,
+      }));
+      molecules && dispatch(postOrderThunk(molecules));
+    }
+  };
+
   return (
     <>
       <Header />
@@ -42,7 +63,7 @@ const Order: React.FC = (): JSX.Element => {
               {orderSalad ? (
                 Array.isArray(orderSalad) ? (
                   <>
-                    {orderSalad.map((molecule: IMolecule) => (
+                    {orderSalad.map((molecule) => (
                       <CreatedSaladInner key={molecule._id}>
                         <CreatedSaladList>
                           <CreatedSaladListItem>
@@ -68,7 +89,9 @@ const Order: React.FC = (): JSX.Element => {
                     ))}
                     <OrderFooter>
                       <Price>Общая стоимость: {orderSaladPrice}</Price>
-                      <Button>Оформить заказ</Button>
+                      <Button onClick={postOrderButtonClick}>
+                        Оформить заказ
+                      </Button>
                     </OrderFooter>
                   </>
                 ) : (
@@ -102,12 +125,14 @@ const Order: React.FC = (): JSX.Element => {
 
                     <OrderFooter>
                       <Price>Общая стоимость: {orderSaladPrice}</Price>
-                      <Button>Оформить заказ</Button>
+                      <Button onClick={postOrderButtonClick}>
+                        Оформить заказ
+                      </Button>
                     </OrderFooter>
                   </>
                 )
               ) : (
-                <p>Вы пока ничего не добавили в корзину</p>
+                <Title>Вы пока ничего не добавили в корзину</Title>
               )}
             </OrderInner>
           </OrderWrapper>

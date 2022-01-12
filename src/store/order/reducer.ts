@@ -1,14 +1,38 @@
 import { IOrderState, OrderAction, OrderActionTypes } from './types';
 
 const initialState: IOrderState = {
-  salad: null,
+  error: null,
+  status: 'idle',
+  orderSalad: null,
 };
 
-const orderReducer = (state = initialState, action: OrderAction) => {
+const orderReducer = (
+  state = initialState,
+  action: OrderAction
+): IOrderState => {
   switch (action.type) {
     case OrderActionTypes.ADD_ORDER:
       return {
-        salad: action.payload,
+        ...state,
+        orderSalad: action.payload,
+      };
+    case OrderActionTypes.POST_ORDER:
+      return {
+        ...state,
+        status: 'loading',
+      };
+
+    case OrderActionTypes.POST_ORDER_SUCCESS:
+      return {
+        ...state,
+        status: 'succeeded',
+      };
+
+    case OrderActionTypes.POST_ORDER_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+        status: 'failed',
       };
 
     default:
