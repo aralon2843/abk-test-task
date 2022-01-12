@@ -2,12 +2,9 @@ const theme = {
   colors: {
     white: '#ffffff',
     black: '#000000',
-
-    light: '#F4EDE5',
-    green: '#BCC99B',
-    pink: '#E8B0AF',
-    coral: '#E2686B',
-    orange: '#C26522',
+    light: '#F6F6F6',
+    blue: '#7289DA',
+    dark: '#2C2F33',
   },
 };
 

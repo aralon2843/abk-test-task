@@ -31,10 +31,11 @@ export const SaladWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.light};
   border-radius: 15px;
   padding-bottom: 15px;
   overflow: hidden;
+  color: ${({ theme }) => theme.colors.dark};
   &:last-child {
     margin-right: 0;
   }

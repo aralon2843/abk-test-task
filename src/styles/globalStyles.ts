@@ -10,8 +10,8 @@ const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
   body {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    font-weight: 400;
-    background-color: ${({ theme }) => theme.colors.light};
+    font-weight: 500;
+    background-color: ${({ theme }) => theme.colors.dark};
   }
   ul {
     list-style: none;

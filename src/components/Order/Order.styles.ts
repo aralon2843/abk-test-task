@@ -11,7 +11,8 @@ export const OrderWrapper = styled.div`
 export const OrderInner = styled.div`
   padding: 10px;
   border-radius: 15px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.dark};
   height: 100%;
   width: 600px;
   display: flex;

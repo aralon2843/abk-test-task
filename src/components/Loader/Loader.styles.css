@@ -1,6 +1,6 @@
 .loader-wrapper {
   height: 100%;
-  width: 100%; 
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,6 @@
   position: relative;
   width: 55px;
   height: 55px;
-  /* margin-top: 15px; */
 }
 .lds-roller div {
   animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
@@ -24,7 +23,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c26522;
+  background: #7289da;
   margin: -4px 0 0 -4px;
 }
 .lds-roller div:nth-child(1) {

@@ -11,7 +11,8 @@ export const MoleculesWrapper = styled.div`
 
 export const MoleculeWrapper = styled.div`
   flex: 0 1 170px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.dark};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -35,7 +36,6 @@ export const Image = styled.img`
 export const Title = styled.h2`
   flex: 1 1 auto;
   font-size: 14px;
-  font-weight: 500;
   text-align: center;
   margin-bottom: 10px;
   @media (max-width: 768px) {
@@ -44,7 +44,6 @@ export const Title = styled.h2`
 `;
 export const Quantity = styled.p`
   flex: 1 1 auto;
-  font-weight: 500;
   font-size: 18px;
   margin-bottom: 10px;
   @media (max-width: 768px) {
@@ -55,7 +54,6 @@ export const Price = styled.div`
   flex: 1 1 auto;
   padding: 5px 10px;
   border-radius: 10px;
-  font-weight: 500;
   margin-bottom: 10px;
   text-align: center;
   @media (max-width: 768px) {
@@ -70,16 +68,17 @@ export const Button = styled.button`
   outline: none;
   border: none;
   padding: 5px 5px;
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${({ theme }) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.light};
   border-radius: 10px;
   cursor: pointer;
   height: 30px;
   width: 150px;
-  font-weight: 500;
-  transition: 0.3s ease background-color;
+  transition: 0.3s ease all;
   margin: 0 auto;
   flex: 0 0 auto;
   &:not([disabled]):hover {
-    background-color: ${({ theme }) => theme.colors.pink};
+    background-color: ${({ theme }) => theme.colors.dark};
+    color: ${({ theme }) => theme.colors.white};
   }
 `;

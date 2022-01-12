@@ -7,7 +7,7 @@ export const HeaderWrapper = styled.header`
   left: 0;
   width: 100%;
   z-index: 10;
-  background-color: ${({ theme }) => theme.colors.pink};
+  background-color: ${({ theme }) => theme.colors.blue};
 `;
 
 export const HeaderInner = styled.div`
@@ -21,7 +21,6 @@ export const Menu = styled.ul`
   align-items: center;
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.white};
-  font-weight: 500;
   font-size: 16px;
 
   @media (max-width: 768px) {
@@ -34,7 +33,7 @@ export const MenuItem = styled.li`
   cursor: pointer;
   transition: 0.3s ease all;
   &:hover {
-    color: ${({ theme }) => theme.colors.coral};
+    color: ${({ theme }) => theme.colors.dark};
   }
   &:last-child {
     margin-right: 0;

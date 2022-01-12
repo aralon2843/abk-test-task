@@ -19,16 +19,12 @@ import {
   SaladWrapper,
 } from './Salads.styles';
 const Salads: React.FC = (): JSX.Element => {
-  const dispatch = useDispatch();
-
   const { salads, status, error } = useSelector(
     (state: RootState) => state.salads
   );
   const { orderSalad } = useSelector((state: RootState) => state.order);
 
-  useEffect(() => {
-    !salads && dispatch(fetchSaladsThunk());
-  }, [dispatch]);
+  const dispatch = useDispatch();
 
   const onAddButtonClick = (salad: ISalad): void => {
     dispatch(addOrder(salad));
@@ -36,6 +32,11 @@ const Salads: React.FC = (): JSX.Element => {
   const onDeleteButtonClick = (): void => {
     dispatch(deleteOrder());
   };
+
+  useEffect(() => {
+    !salads && dispatch(fetchSaladsThunk());
+  }, []);
+
   return (
     <>
       {error && <Title>{error}</Title>}

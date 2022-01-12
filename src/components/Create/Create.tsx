@@ -6,7 +6,6 @@ import { addOrder } from '../../store/order/actions';
 import { RootState } from '../../store/store';
 import { Container, Content } from '../App/App.styles';
 import CreatedSalad from '../CreatedSalad/CreatedSalad';
-import { FlexContainer } from '../App/App.styles';
 import Header from '../Header/Header';
 import Loader from '../Loader/Loader';
 import Molecules from '../Molecules/Molecules';
