@@ -30,21 +30,13 @@ export const Menu = styled.ul`
 `;
 
 export const MenuItem = styled.li`
-  margin-right: 15px;
+  margin-right: 25px;
   cursor: pointer;
   transition: 0.3s ease all;
-  &:last-child {
-    text-transform: uppercase;
-    margin-right: 0;
-    padding: 6px 12px;
-    border-radius: 12px;
-    background-color: ${({ theme }) => theme.colors.coral};
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.green};
-      color: ${({ theme }) => theme.colors.light};
-    }
-  }
-  &:not(:last-child):hover {
+  &:hover {
     color: ${({ theme }) => theme.colors.coral};
+  }
+  &:last-child {
+    margin-right: 0;
   }
 `;

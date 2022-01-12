@@ -6,11 +6,12 @@ import { addOrder } from '../../store/order/actions';
 import { RootState } from '../../store/store';
 import { Container, Content } from '../App/App.styles';
 import CreatedSalad from '../CreatedSalad/CreatedSalad';
-import { FlexContainer } from '../CreatedSalad/CreatedSalad.styles';
+import { FlexContainer } from '../App/App.styles';
 import Header from '../Header/Header';
 import Loader from '../Loader/Loader';
 import Molecules from '../Molecules/Molecules';
 import { Title } from '../Molecules/Molecules.styles';
+import { CreateWrapper } from '../CreatedSalad/CreatedSalad.styles';
 
 const Create: React.FC = (): JSX.Element => {
   const { molecules, status, error } = useSelector(
@@ -80,11 +81,11 @@ const Create: React.FC = (): JSX.Element => {
       <Header />
       <Container>
         <Content>
-          {error ? <Title>{error}</Title> : <Title>Собрать свой салат</Title>}
+          {error && <Title>{error}</Title>}
           {status === 'loading' && !isCreatedSaladInOrder ? (
             <Loader />
           ) : (
-            <FlexContainer>
+            <CreateWrapper>
               <Molecules molecules={molecules} onClick={onMoleculeClick} />
               <CreatedSalad
                 createdSalad={createdSalad}
@@ -92,7 +93,7 @@ const Create: React.FC = (): JSX.Element => {
                 onAddButtonClick={onAddButtonClick}
                 isCreatedSaladInOrder={isCreatedSaladInOrder}
               />
-            </FlexContainer>
+            </CreateWrapper>
           )}
         </Content>
       </Container>

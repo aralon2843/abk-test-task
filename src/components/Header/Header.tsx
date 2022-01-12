@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container } from '../App/App.styles';
+import { Container, FlexContainer } from '../App/App.styles';
 import {
   HeaderInner,
   HeaderWrapper,
@@ -17,12 +17,14 @@ const Header: React.FC = (): JSX.Element => {
         <HeaderInner>
           <Navigation>
             <Menu>
-              <MenuItem>
-                <Link to="/">Салаты</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/create"> Собрать салат</Link>
-              </MenuItem>
+              <FlexContainer>
+                <MenuItem>
+                  <Link to="/">Салаты</Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/create"> Собрать салат</Link>
+                </MenuItem>
+              </FlexContainer>
               <MenuItem>
                 <Link to="/order"> Корзина</Link>
               </MenuItem>

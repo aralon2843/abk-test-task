@@ -11,5 +11,11 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 80px 10px 10px 10px;
+  padding: 60px 10px 10px 10px;
+`;
+
+export const FlexContainer = styled.div<{ align?: string; justify?: string }>`
+  display: flex;
+  justify-content: ${({ justify }) => (justify ? justify : 'flex-start')};
+  align-items: ${({ align }) => (align ? align : 'stretched')};
 `;

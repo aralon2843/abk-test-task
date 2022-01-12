@@ -8,11 +8,14 @@ export const CreatedSaladWrapper = styled.div`
   margin-top: 10px;
   padding: 10px;
   height: 100%;
+  @media (max-width: 768px) {
+    flex: 1 1 100%;
+  }
 `;
 
-export const FlexContainer = styled.div`
+export const CreateWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   @media (max-width: 768px) {
     display: block;
   }
