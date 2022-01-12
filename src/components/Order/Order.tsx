@@ -3,19 +3,11 @@ import { IMolecule } from '../../store/molecules/types';
 import { postOrderThunk } from '../../store/order/actions';
 import { RootState } from '../../store/store';
 import { Container, Content } from '../App/App.styles';
-import {
-  CreatedSaladInner,
-  CreatedSaladList,
-  CreatedSaladListItem,
-} from '../CreatedSalad/CreatedSalad.styles';
 import Header from '../Header/Header';
-import {
-  Button,
-  DiscountPrice,
-  Price,
-  Title,
-} from '../Molecules/Molecules.styles';
+import { Button, Price, Title } from '../Molecules/Molecules.styles';
 import { OrderFooter, OrderInner, OrderWrapper } from './Order.styles';
+import OrderList from '../OrderList/OrderList';
+import Loader from '../Loader/Loader';
 
 const Order: React.FC = (): JSX.Element => {
   const { orderSalad, error, status } = useSelector(
@@ -60,32 +52,14 @@ const Order: React.FC = (): JSX.Element => {
         <Content>
           <OrderWrapper>
             <OrderInner>
-              {orderSalad ? (
+              {error && <Title>{error}</Title>}
+              {status === 'loading' ? (
+                <Loader />
+              ) : orderSalad ? (
                 Array.isArray(orderSalad) ? (
                   <>
                     {orderSalad.map((molecule) => (
-                      <CreatedSaladInner key={molecule._id}>
-                        <CreatedSaladList>
-                          <CreatedSaladListItem>
-                            {molecule.title}
-                          </CreatedSaladListItem>
-                          <CreatedSaladListItem>
-                            Количество: {molecule.qty}
-                          </CreatedSaladListItem>
-                          <CreatedSaladListItem>
-                            {molecule.price === molecule.discount_price ? (
-                              <Price>
-                                Цена: {molecule.price * molecule.qty}
-                              </Price>
-                            ) : (
-                              <DiscountPrice>
-                                Цена с учетом скидки:{' '}
-                                {molecule.discount_price * molecule.qty}
-                              </DiscountPrice>
-                            )}
-                          </CreatedSaladListItem>
-                        </CreatedSaladList>
-                      </CreatedSaladInner>
+                      <OrderList molecule={molecule} />
                     ))}
                     <OrderFooter>
                       <Price>Общая стоимость: {orderSaladPrice}</Price>
@@ -99,28 +73,7 @@ const Order: React.FC = (): JSX.Element => {
                     <Title>{orderSalad?.title}</Title>
 
                     {orderSalad?.composition?.map((molecule: IMolecule) => (
-                      <CreatedSaladInner>
-                        <CreatedSaladList>
-                          <CreatedSaladListItem>
-                            {molecule.title}
-                          </CreatedSaladListItem>
-                          <CreatedSaladListItem>
-                            Количество: {molecule.qty}
-                          </CreatedSaladListItem>
-                          <CreatedSaladListItem>
-                            {molecule.price === molecule.discount_price ? (
-                              <Price>
-                                Цена: {molecule.price * molecule.qty}
-                              </Price>
-                            ) : (
-                              <DiscountPrice>
-                                Цена с учетом скидки:{' '}
-                                {molecule.discount_price * molecule.qty}
-                              </DiscountPrice>
-                            )}
-                          </CreatedSaladListItem>
-                        </CreatedSaladList>
-                      </CreatedSaladInner>
+                      <OrderList molecule={molecule} />
                     ))}
 
                     <OrderFooter>
@@ -131,6 +84,8 @@ const Order: React.FC = (): JSX.Element => {
                     </OrderFooter>
                   </>
                 )
+              ) : status === 'succeeded' ? (
+                <Title>Спасибо, ваш заказ отправлен!</Title>
               ) : (
                 <Title>Вы пока ничего не добавили в корзину</Title>
               )}

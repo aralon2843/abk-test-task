@@ -9,6 +9,7 @@ export interface IOrderState {
 
 export enum OrderActionTypes {
   ADD_ORDER = 'ADD_ORDER',
+  DELETE_ORDER = 'DELETE_ORDER',
   POST_ORDER = 'POST_ORDER',
   POST_ORDER_SUCCESS = 'POST_ORDER_SUCCESS',
   POST_ORDER_ERROR = 'POST_ORDER_ERROR',
@@ -17,6 +18,10 @@ export enum OrderActionTypes {
 export interface AddOrder {
   type: OrderActionTypes.ADD_ORDER;
   payload: ISalad | IMolecule[];
+}
+
+export interface DeleteOrder {
+  type: OrderActionTypes.DELETE_ORDER;
 }
 
 export interface PostOrder {
@@ -34,6 +39,7 @@ export interface PostOrderError {
 
 export type OrderAction =
   | AddOrder
+  | DeleteOrder
   | PostOrder
   | PostOrderSuccess
   | PostOrderError;

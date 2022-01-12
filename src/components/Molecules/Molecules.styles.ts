@@ -3,20 +3,25 @@ export const MoleculesWrapper = styled.div`
   flex: 0 1 50%;
   display: flex;
   flex-wrap: wrap;
+  overflow: scroll;
+  @media (max-width: 768px) {
+    flex-wrap: nowrap;
+  }
 `;
 
 export const MoleculeWrapper = styled.div`
-  flex: 0 1 300px;
+  flex: 0 1 170px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 10px;
-  max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
-  margin-right: 10px;
+  margin: 10px;
   overflow: hidden;
   padding-bottom: 15px;
+  @media (max-width: 768px) {
+    flex: 0 0 170px;
+  }
 `;
 
 export const Image = styled.img`
@@ -33,12 +38,18 @@ export const Title = styled.h2`
   font-weight: 500;
   text-align: center;
   margin-bottom: 10px;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 export const Quantity = styled.p`
   flex: 1 1 auto;
   font-weight: 500;
   font-size: 18px;
   margin-bottom: 10px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 export const Price = styled.div`
   flex: 1 1 auto;
@@ -47,6 +58,9 @@ export const Price = styled.div`
   font-weight: 500;
   margin-bottom: 10px;
   text-align: center;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 export const DiscountPrice = styled(Price)``;

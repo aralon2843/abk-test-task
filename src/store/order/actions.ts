@@ -11,6 +11,12 @@ export const addOrder = (payload: ISalad | IMolecule[]): OrderAction => {
   };
 };
 
+export const deleteOrder = (): OrderAction => {
+  return {
+    type: OrderActionTypes.DELETE_ORDER,
+  };
+};
+
 export const postOrder = (): OrderAction => {
   return {
     type: OrderActionTypes.POST_ORDER,
@@ -37,7 +43,7 @@ export const postOrderThunk = (order: { id: string; qty: number }[]) => {
       await makeOrder(order);
       dispatch(postOrderSuccess());
     } catch (e) {
-      dispatch(postOderFailure('Sorry, there was an error making order'));
+      dispatch(postOderFailure('Произошла ошибка'));
     }
   };
 };

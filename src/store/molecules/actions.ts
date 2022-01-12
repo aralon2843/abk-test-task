@@ -32,7 +32,7 @@ export const fetchMoleculesThunk = () => {
       dispatch(fetchMoleculesSuccess(molecules));
     } catch (e) {
       dispatch(
-        fetchMoleculesFailure('Sorry, there was an error loading molecules')
+        fetchMoleculesFailure('Произошла ошибка при загрузке данных')
       );
     }
   };

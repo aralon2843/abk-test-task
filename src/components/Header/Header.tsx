@@ -21,10 +21,10 @@ const Header: React.FC = (): JSX.Element => {
                 <Link to="/">Салаты</Link>
               </MenuItem>
               <MenuItem>
-                <Link to="/create"> Собрать свой салат</Link>
+                <Link to="/create"> Собрать салат</Link>
               </MenuItem>
               <MenuItem>
-                <Link to="/order"> Оформить заказ</Link>
+                <Link to="/order"> Корзина</Link>
               </MenuItem>
             </Menu>
           </Navigation>

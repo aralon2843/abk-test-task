@@ -52,3 +52,23 @@ export const SaladCompositionItem = styled.li`
   justify-content: space-between;
   margin-bottom: 5px;
 `;
+
+export const SaladInner = styled.div`
+  flex: 1 1 auto;
+`;
+
+export const SaladList = styled.ul`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+`;
+
+export const SaladListItem = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33.333%;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+`;

@@ -53,7 +53,7 @@ export const fetchSaladsThunk = () => {
         });
       });
     } catch (e) {
-      dispatch(fetchSaladsFailure('Sorry, there was an error loading salads'));
+      dispatch(fetchSaladsFailure('Произошла ошибка при загрузке данных'));
     }
   };
 };

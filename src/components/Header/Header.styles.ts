@@ -23,6 +23,10 @@ export const Menu = styled.ul`
   color: ${({ theme }) => theme.colors.white};
   font-weight: 500;
   font-size: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 export const MenuItem = styled.li`

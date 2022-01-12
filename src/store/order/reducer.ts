@@ -16,6 +16,11 @@ const orderReducer = (
         ...state,
         orderSalad: action.payload,
       };
+    case OrderActionTypes.DELETE_ORDER:
+      return {
+        ...state,
+        orderSalad: null,
+      };
     case OrderActionTypes.POST_ORDER:
       return {
         ...state,
@@ -25,6 +30,7 @@ const orderReducer = (
     case OrderActionTypes.POST_ORDER_SUCCESS:
       return {
         ...state,
+        orderSalad: null,
         status: 'succeeded',
       };
 
